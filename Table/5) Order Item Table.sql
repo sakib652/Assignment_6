@@ -1,0 +1,14 @@
+CREATE TABLE `order_items`(
+    `item_id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+
+    `order_id` BIGINT(20) UNSIGNED NOT NULL,
+    Foreign Key (`order_id`) REFERENCES `orders`(`order_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
+
+    `product_id` BIGINT(20) UNSIGNED NOT NULL,
+    Foreign Key (`product_id`) REFERENCES `products`(`product_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
+
+    `quantity` INT NOT NULL,
+    `unit_price` FLOAT NOT NULL,
+    `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+    `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP()
+)
